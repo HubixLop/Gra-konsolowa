@@ -34,10 +34,46 @@ void wykonajRuch(){
 int main(){
     int wybor;
     int szerokosc = 9, wysokosc =9, miny =10;
+
+    bool poprawnyWybor = false;
     do {
         cout << "=== SAPER ===" << endl;
-        cout << "1. Graj - Poziom Latwy (9x9, 10 min)" << endl;
-        cout << "2. Graj - Poziom Sredni (16x16, 40 min)" << endl;
-        cout << "3. Graj - Poziom Trudny (30x16, 99 min)" << endl;
-    }
+        cout << "1. Graj - Poziom Latwy (9x9, 10 miny)" << endl;
+        cout << "2. Graj - Poziom Sredni (16x16, 40 miny)" << endl;
+        cout << "3. Graj - Poziom Trudny (30x16, 99 miny)" << endl;
+        cout << "Wybierz poziom trudnosci (1-3): ";
+        cin >> wybor;;
+
+        switch(wybor){
+            case 1:
+                szerokosc = 9;
+                wysokosc = 9;
+                miny = 10;
+                poprawnyWybor = true;
+                break;
+            case 2:
+                szerokosc = 16;
+                wysokosc = 16;
+                miny = 40;
+                poprawnyWybor = true;
+                break;
+            case 3:
+                szerokosc = 30;  
+                wysokosc = 16;
+                miny = 99;
+                poprawnyWybor = true;
+                break;
+            default:
+            cout << "\nNiepoprawny wybor! Sprobuj ponownie.\n" << endl;
+            poprawnyWybor = false;
+            break;
+        }
+    
+    
+    
+    
+    
+    } while (!poprawnyWybor);
+    cout << "\nWybrano poziom! Plansza: " << szerokosc << "x" << wysokosc << ", Miny: " << miny << endl;
+    return 0;
 }
