@@ -31,6 +31,24 @@ void wykonajRuch(){
         cout << "Niepoprawna akcja!" << endl;
     }
 }
+
+
+void wyswietlPlansze(int wysokosc, int szerokosc, char** plansza){
+    cout << "   ";
+    for (int x=0; x < szerokosc; x++){
+        if (x < 10) cout << x << "  ";
+        else cout << x << " ";
+    }
+    cout << endl;
+    for (int y=0; y < wysokosc; y++){
+        if (y < 10) cout << y << "  ";
+        else cout << y << " ";
+        for (int x=0; x < szerokosc; x++){
+            cout << plansza[y][x] << "  ";
+        }
+        cout << endl;
+    }
+}
 int main(){
     int wybor;
     int szerokosc = 9, wysokosc =9, miny =10;
@@ -75,5 +93,32 @@ int main(){
     
     } while (!poprawnyWybor);
     cout << "\nWybrano poziom! Plansza: " << szerokosc << "x" << wysokosc << ", Miny: " << miny << endl;
-    return 0;
-}
+    
+    char** plansza = new char*[wysokosc];
+    for (int i=0; i < wysokosc; i++){
+        plansza[i] = new char[szerokosc];
+    }    
+        for (int y=0; y < wysokosc; y++){
+            for (int x=0; x <szerokosc; x++){
+                plansza[y][x] = '#';
+            }
+        }
+        wyswietlInstrukcje();
+        cout << endl;
+        wyswietlPlansze(wysokosc, szerokosc, plansza);
+        wykonajRuch();
+
+        for (int i=0; i < wysokosc; i++){
+            delete[] plansza[i];
+        }
+        delete[] plansza;
+
+        return 0;
+
+
+
+
+
+
+
+    }
